@@ -3,4 +3,5 @@ class User < ApplicationRecord
     has_many :quotes
     has_many :orders
     has_many :payments
+    has_many :carted_orders
 end
