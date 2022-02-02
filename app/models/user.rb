@@ -3,5 +3,4 @@ class User < ApplicationRecord
     has_many :quotes
     has_many :orders
     has_many :payments
-    
 end

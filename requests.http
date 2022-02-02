@@ -1,0 +1,24 @@
+#Index requests
+GET http://localhost:3000/companies
+###
+GET http://localhost:3000/localhost:3000/users
+###
+#Create requests
+POST http://localhost:3000/companies
+Content-Type: application/json
+
+{
+  "name": "Purple Carp",
+  "address": "111 Purple Carp Lane"
+}
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "first_name": "Santa",
+  "last_name": "Claus",
+  "email": "santa.claus@blue.carp",
+  "company_id": 2
+}

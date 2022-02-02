@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  #company routes
+  get "/companies" => "companies#index"
+  post "/companies" => "companies#create"
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  #user routes
+  get "/users" => "users#index"
+  post "/users" => "users#create"
+  
 end
