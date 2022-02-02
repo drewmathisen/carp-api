@@ -1,0 +1,2 @@
+class QuotedProductsController < ApplicationController
+end

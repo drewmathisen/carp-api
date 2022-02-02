@@ -1,0 +1,2 @@
+class QuotedProduct < ApplicationRecord
+end
