@@ -1,0 +1,2 @@
+class CartedOrdersController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class CartedOrder < ApplicationRecord
+end
