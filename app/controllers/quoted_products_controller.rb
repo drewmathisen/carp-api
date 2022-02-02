@@ -12,8 +12,8 @@ class QuotedProductsController < ApplicationController
             quote_id: params[:quote_id],
             quantity: params[:quantity]
         )
-        q.save  
-        render json: q
+        qp.save  
+        render json: qp
     end
 
 end
