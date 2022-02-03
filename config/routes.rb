@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get "/orders/:user_id" => "orders#index"
   post "/orders/:user_id" => "orders#create"
   get "/orders/:user_id/:id" => "orders#show"
+  get "/orders/:user_id/:id" => "orders#show"
 end

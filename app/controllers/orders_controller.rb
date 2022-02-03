@@ -6,8 +6,8 @@ class OrdersController < ApplicationController
         o = Order.where(user_id: params[:user_id]) 
         render json: o
     end
+
 # create works by: returning carted quotes that are associated with a user ID and where the status is "carted"
-#
     def create
 
         #returning carted quotes with a status of "carted"
@@ -36,8 +36,8 @@ class OrdersController < ApplicationController
         render json: o
     end
 
+#show works by creating an empty hash to hold all the arrays that are relevant to an order. Show uses table associations to pull associated arrays and adds them to the hash and the hash is returned as json
     def show
-
         #full order is a hash that will hold all relevant information for the order 
         full_order={}
         order = Order.find_by(id: params[:id], user_id: params[:user_id])
@@ -55,9 +55,21 @@ class OrdersController < ApplicationController
         order.quotes.each {|quote| products << quote.products}
         full_order[:products] = products
         #pulls the associated payments
-        full_order[:paymets] = order.payments
+        full_order[:payments] = order.payments
 
         render json: full_order
+    end
+
+    def update
+        #updates the basic order params
+        o = order.find_by(id: params[:id])
+        o.user_id = params[:user_id] || o.user_id
+        o.subtotal = params[:subtotal] || o.subtotal
+        o.tax = params[:tax] || o.tax
+        o.total = params[:total] || o.total
+        o.save
+
+        render json: o
     end
 
     def delete
