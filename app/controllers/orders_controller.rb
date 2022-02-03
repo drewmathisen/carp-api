@@ -37,6 +37,21 @@ class OrdersController < ApplicationController
     end
 
     def show
+
+        #full order is a hash that will hold all relevant information for the order 
+        full_order={}
+        order = Order.find_by(id: params[:id], user_id: params[:user_id])
+        products = []
+        #pulls the order based on the order ID provided in params
+        full_order[:order] = order
+        #pull the user associated with the order 
+        full_order[:user] = order.user
+        #pull the quotes associated with the order
+        full_order[:quotes] = order.quotes
+        #pull the products associated with the quotes and order
+        order.quotes.each {|quote| products << quote.products}
+        full_order[:products] = products
+        render json: full_order
     end
 
     def delete

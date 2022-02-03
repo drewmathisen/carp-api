@@ -36,3 +36,7 @@ Content-Type: application/json
   "name": "Cedar 2in*4in*8ft",
   "price": "99.54"
 }
+
+###
+#show requests
+GET http://localhost:3000/orders/1/1

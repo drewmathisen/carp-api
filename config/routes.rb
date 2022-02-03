@@ -13,6 +13,6 @@ Rails.application.routes.draw do
 
   #order routes
   get "/orders/:user_id" => "orders#index"
-  post "/products" => "products#create"
-
+  post "/orders/:user_id" => "orders#create"
+  get "/orders/:user_id/:id" => "orders#show"
 end
