@@ -60,6 +60,7 @@ class OrdersController < ApplicationController
         render json: full_order
     end
 
+    #update works by calling the order by id, then updates the order params with the provided params. when no update is provided, the existing param is used. 
     def update
         #updates the basic order params
         o = order.find_by(id: params[:id])
@@ -73,5 +74,8 @@ class OrdersController < ApplicationController
     end
 
     def delete
+        o = order.find_by(id: params[:id])
+        o.destroy
+        render json:{message: "Order Deleted"}
     end
 end
