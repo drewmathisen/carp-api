@@ -42,15 +42,21 @@ class OrdersController < ApplicationController
         full_order={}
         order = Order.find_by(id: params[:id], user_id: params[:user_id])
         products = []
-        #pulls the order based on the order ID provided in params
-        full_order[:order] = order
+        user = order.user
         #pull the user associated with the order 
         full_order[:user] = order.user
+        #pull the company associated with the user 
+        full_order[:company] = user.company
+        #pulls the order based on the order ID provided in params
+        full_order[:order] = order
         #pull the quotes associated with the order
         full_order[:quotes] = order.quotes
-        #pull the products associated with the quotes and order
+        #pull the products associated with the order. Does so by mapping thru the associated quotes and pulling the product  information.
         order.quotes.each {|quote| products << quote.products}
         full_order[:products] = products
+        #pulls the associated payments
+        full_order[:paymets] = order.payments
+
         render json: full_order
     end
 
