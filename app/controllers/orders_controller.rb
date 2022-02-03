@@ -19,14 +19,26 @@ class OrdersController < ApplicationController
             calculated_subtotal += carted_order.quote.total
         end
 
+        #returns the calculated tax and total of the particular order. Takes the tax rate and multiplies it with the calculated subtotal, as determined above. This determines two parameters for the order: tax and total
+        tax_rate = 0.029
+        calculated_tax = calculated_subtotal * tax_rate
+        calculated_total = calculated_tax + calculated_subtotal
+
+        #combining the logic above to create the new order
 
         o = Order.new(
             user_id: params[:user_id],
-            subtotal: params[:subtotal],
-            tax: params[:tax],
-            total: params[:total]
+            subtotal: calculated_subtotal,
+            tax: calculated_tax,
+            total: calculated_subtotal
         )
         o.save  
         render json: o
+    end
+
+    def show
+    end
+
+    def delete
     end
 end
