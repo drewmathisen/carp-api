@@ -44,6 +44,7 @@ gem "bootsnap", require: false
 
 gem 'active_model_serializers', '~> 0.10.0'
 
+gem 'seed_dump'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
