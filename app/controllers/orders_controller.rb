@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
             user_id: params[:user_id],
             subtotal: calculated_subtotal,
             tax: calculated_tax,
-            total: calculated_subtotal
+            total: calculated_total
         )
         o.save  
         render json: o
